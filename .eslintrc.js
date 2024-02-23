@@ -26,7 +26,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/return-await': ['error', 'always'],
-    // "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     // "no-unused-vars": "off",
     "simple-import-sort/imports": "error",
     "import/first": "error",
