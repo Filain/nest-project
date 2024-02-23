@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 
-import { CacheCustom } from '../../common/decorators/cache-method.decorator';
-import { CreateUserDto } from './dto/request/create-user.dto';
-import { UpdateUserDto } from './dto/request/update-user.dto';
+import { CacheCustom } from '../../../common/decorators/cache-method.decorator';
+import { CreateUserDto } from '../models/dto/request/create-user.dto';
+import { UpdateUserDto } from '../models/dto/request/update-user.dto';
 
 @Injectable()
 export class UserService {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public async create(createUserDto: CreateUserDto): Promise<any> {
     return 'This action adds a new user';
   }
@@ -21,6 +22,7 @@ export class UserService {
 
   public async update(
     id: number,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     updateUserDto: UpdateUserDto,
   ): Promise<string> {
     return `This action updates a #${id} user`;
