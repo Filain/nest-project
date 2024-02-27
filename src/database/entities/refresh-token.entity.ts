@@ -1,6 +1,5 @@
-import { Column, Entity, JoinColumn, ManyToMany, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 
-import { ArticleEntity } from './article.entity';
 import { TableNameEnum } from './enums/table-name.enum';
 import { BaseEntity } from './models/base.entity';
 import { UserEntity } from './user.entity';
@@ -15,13 +14,4 @@ export class RefreshTokenEntity extends BaseEntity {
   @ManyToOne(() => UserEntity, (entity) => entity.refreshTokens)
   @JoinColumn({ name: 'user_id' })
   user?: UserEntity;
-}
-
-@Entity(TableNameEnum.TAGS)
-export class TagEntity extends BaseEntity {
-  @Column('text')
-  name: string;
-
-  @ManyToMany(() => ArticleEntity, (entity) => entity.tags)
-  articles?: ArticleEntity[];
 }

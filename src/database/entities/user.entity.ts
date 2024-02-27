@@ -2,26 +2,27 @@ import { Column, Entity, OneToMany } from 'typeorm';
 
 import { ArticleEntity } from './article.entity';
 import { CommentEntity } from './comment.entity';
+import { TableNameEnum } from './enums/table-name.enum';
 import { FollowEntity } from './follow.entity';
 import { LikeEntity } from './like.entity';
 import { BaseEntity } from './models/base.entity';
 import { RefreshTokenEntity } from './refresh-token.entity';
 
-@Entity('users') //це ентіті сутність бази
+@Entity(TableNameEnum.USERS)
 export class UserEntity extends BaseEntity {
-  @Column('text', { nullable: true }) // колонки нашої бази
-  name?: string;
+  @Column('text')
+  name: string;
 
-  @Column('text') // колонки нашої бази
+  @Column('text')
   email: string;
 
-  @Column('text', { select: false }) // колонки нашої бази
+  @Column('text', { select: false })
   password: string;
 
-  @Column('int', { nullable: true }) // колонки нашої бази
-  bio?: number; // треба ставити знак питаннгя в типізації щоб потім допомагало
+  @Column('text', { nullable: true })
+  bio?: number;
 
-  @Column('int', { nullable: true }) // колонки нашої бази
+  @Column('text', { nullable: true })
   image?: string;
 
   @OneToMany(() => ArticleEntity, (entity) => entity.user)
