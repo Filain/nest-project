@@ -21,7 +21,7 @@ export class CreateUserDto {
   @IsString()
   @Length(3, 10)
   // @Transform(({ value }) => value.trim()) // - тут все трімиться забираються зайві пробіли
-  @Transform(TransformHelper.trim())
+  @Transform(TransformHelper.trim)
   name: string;
 
   @IsInt()

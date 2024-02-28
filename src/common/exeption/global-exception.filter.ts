@@ -3,24 +3,39 @@ import {
   Catch,
   ExceptionFilter,
   HttpException,
+  HttpStatus,
   Logger,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 
 @Catch() // Якщо вписати HTTP - то буде збирати HTTP помилки
 export class GlobalExceptionFilter implements ExceptionFilter {
-  catch(exception: HttpException, host: ArgumentsHost) {
+  catch(exception: unknown, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
-    const status = exception.getStatus(); // дістаємо самостійно
-    const message = exception.message; // дістаємо самостійно
 
-    Logger.error(message, exception.stack, `${request.method} ${request.url}`);
+    let status: HttpStatus;
+    let messages: string | string[];
+    if (exception instanceof HttpException) {
+      status = (exception as HttpException).getStatus();
+      messages = (exception as any).response?.message ?? exception.message; // response?.message - місце де зберігаються валідаційні помилки, якщо ні то беремо з exception.message
+    } else {
+      status = HttpStatus.INTERNAL_SERVER_ERROR;
+      messages = (exception as any).message;
+    }
+
+    messages = Array.isArray(messages) ? messages : [messages]; // пакувальщик в масив
+
+    Logger.error(
+      messages,
+      (exception as any).stack,
+      `${request.method} ${request.url}`,
+    );
 
     response.status(status).json({
       statusCode: status,
-      message,
+      messages,
       timestamp: new Date().toISOString(),
       path: request.url,
     });
