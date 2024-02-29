@@ -15,6 +15,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
+import { SkipAuth } from '../auth/decorators/skip-auth.decorator';
 import { CreateUserDto } from './models/dto/request/create-user.dto';
 import { UpdateUserDto } from './models/dto/request/update-user.dto';
 import { UserResponseDto } from './models/dto/response/user.response.dto';
@@ -29,12 +30,13 @@ export class UserController {
   // // в  параметрах вказуємо тип моделі яка вертається
   // @ApiForbiddenResponse({description:'Forbidden'})
   // @ApiConflictResponse({description:'Conflict'})
-
+  @SkipAuth()
   @Post()
   public async create(@Body() dto: CreateUserDto): Promise<UserResponseDto> {
     return await this.userService.create(dto);
   }
 
+  @SkipAuth()
   @Get()
   public async findAll(): Promise<string> {
     return await this.userService.findAll();

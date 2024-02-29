@@ -23,7 +23,7 @@ const repositories = [
 @Module({
   imports: [],
   controllers: [],
-  providers: [...repositories], // підключаються в наші репозиторії
-  exports: [...repositories], // щоб використовувати їх зовні
+  providers: repositories, // підключаються в наші репозиторії
+  exports: repositories, // щоб використовувати їх зовні
 })
 export class RepositoryModule {}
