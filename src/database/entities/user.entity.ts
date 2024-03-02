@@ -13,7 +13,7 @@ export class UserEntity extends BaseEntity {
   @Column('text')
   name: string;
 
-  @Column('text')
+  @Column('text', { unique: true }) //{ unique: true } вказує на те, що значення в цьому стовпці повинні бути унікальними у межах таблиці, тобто не можуть повторюватися. Це забезпечує, що кожен запис у таблиці має унікальне значення для цього стовпця.
   email: string;
 
   @Column('text', { select: false })
