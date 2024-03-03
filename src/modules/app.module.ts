@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 import configuration from '../configs/configs';
+import { ArticleModule } from './article/article.module';
 import { AuthModule } from './auth/auth.module';
 import { HealthModule } from './health/health.module';
 import { PostgresModule } from './postgress/postgres.module';
@@ -21,6 +22,7 @@ import { UserModule } from './user/user.module';
     UserModule,
     HealthModule,
     RepositoryModule,
+    ArticleModule,
   ],
   controllers: [],
   providers: [],

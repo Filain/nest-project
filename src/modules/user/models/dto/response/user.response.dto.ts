@@ -5,7 +5,9 @@ export class UserResponseDto {
   // @ApiProperty({ default: 'Krasava', description: 'name', required: false }) // дає швагеру знати що є в юзеру,
   // // в налаштуваннях вказати чи обовязкове воно чи є щось в дескріпшенах.
   name?: string;
-  age: number;
+  // age: number;
   email: string;
-  password: string;
+  // password: string;
+  bio: string;
+  image: string;
 }
