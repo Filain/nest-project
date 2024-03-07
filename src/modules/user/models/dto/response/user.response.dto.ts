@@ -10,4 +10,5 @@ export class UserResponseDto {
   // password: string;
   bio: string;
   image: string;
+  isFollowed: boolean;
 }
