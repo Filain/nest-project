@@ -5,10 +5,10 @@ import {
 } from 'typeorm';
 
 export class BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('uuid') //первинний ключ (Primary Key) із автоматично генерованим значенням унікального ідентифікатора типу UUID.
   id: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn() //він наказує TypeORM автоматично встановлювати значення цієї властивості на поточну позначку часу, коли новий запис вставляється в базу даних.
   created: Date;
 
   @UpdateDateColumn()

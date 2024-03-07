@@ -5,7 +5,7 @@ import { DataSource } from 'typeorm';
 
 import getConfigs from './src/configs/configs';
 
-dotenv.config({ path: './environments/local.env' });
+dotenv.config({ path: './environments/local.env' }); //спробує зчитати змінні середовища з файлу local.env в папці environments вашого проекту
 
 const postgresConfig = getConfigs().postgres;
 
